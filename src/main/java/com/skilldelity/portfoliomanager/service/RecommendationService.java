@@ -8,11 +8,11 @@ import com.skilldelity.portfoliomanager.engine.ScoringEngine;
 import com.skilldelity.portfoliomanager.engine.TechnicalIndicatorCalculator;
 import com.skilldelity.portfoliomanager.model.PricePoint;
 import com.skilldelity.portfoliomanager.model.RecommendationResult;
+import com.skilldelity.portfoliomanager.model.TechnicalAnalysisResultts;
 
 @Service
 public class RecommendationService {
     
-    private final PortfolioService portfolioService;
     private final MarketDataService marketDataService;
     private final TechnicalIndicatorCalculator indicatorCalculator;
     private final ScoringEngine scoringEngine;
@@ -23,8 +23,12 @@ public class RecommendationService {
         this.scoringEngine = scoringEngine;
     }
 
+    /**
+     * Generates a recommendation for the given stock symbol.
+     */   
     public RecommendationResult getRecommendation(String symbol) {
         List<PricePoint> prices = marketDataService.getHistoricalPrices(symbol);
-        return scoringEngine.getRecommendation(prices);
+        TechnicalAnalysisResultts stats = indicatorCalculator.analyze(prices);
+        return scoringEngine.score(stats);
     }
 }

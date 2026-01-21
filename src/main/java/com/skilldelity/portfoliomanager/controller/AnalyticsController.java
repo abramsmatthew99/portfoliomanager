@@ -22,11 +22,22 @@ public class AnalyticsController {
         this.projectionService = projectionService;
     }
 
+    /**
+     * Gets stock recommendation for the given symbol.
+     * @param symbol
+     * @return RecommendationResult
+     */
     @GetMapping("/recommendation")
     public RecommendationResult getRecommendation(@RequestParam String symbol) {
         return recommendationService.getRecommendation(symbol);
     }
 
+    /**
+     * Gets portfolio projection until target age.
+     * @param userId
+     * @param targetAge
+     * @return ProjectionResult
+     */ 
     @GetMapping("/projection")
     public ProjectionResult getProjection(@RequestParam long userId, @RequestParam(defaultValue = "65") int targetAge)  {
             return projectionService.project(userId, targetAge);

@@ -13,7 +13,10 @@ public class ProjectionService {
     public ProjectionService(TechnicalIndicatorCalculator technicalIndicatorCalculator) {
         this.technicalIndicatorCalculator = technicalIndicatorCalculator;
     }
-
+    
+    /**
+     * Projects the user's portfolio growth until the target age.
+     */
     public ProjectionResult project(long userId, int targetAge) {
         throw new UnsupportedOperationException("Not implemented yet");
     }
