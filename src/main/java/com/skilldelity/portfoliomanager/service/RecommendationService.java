@@ -17,8 +17,7 @@ public class RecommendationService {
     private final TechnicalIndicatorCalculator indicatorCalculator;
     private final ScoringEngine scoringEngine;
 
-    public RecommendationService(PortfolioService portfolioService, MarketDataService marketDataService, TechnicalIndicatorCalculator indicatorCalculator, ScoringEngine scoringEngine) {
-        this.portfolioService = portfolioService;
+    public RecommendationService(MarketDataService marketDataService, TechnicalIndicatorCalculator indicatorCalculator, ScoringEngine scoringEngine) {
         this.marketDataService = marketDataService;
         this.indicatorCalculator = indicatorCalculator;
         this.scoringEngine = scoringEngine;
